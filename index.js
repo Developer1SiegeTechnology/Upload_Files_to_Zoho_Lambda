@@ -17,11 +17,11 @@ exports.handler = function (event){
         try{
             let params = {
                 Bucket : 'ivansfiles',
-                Key : 'YEJPY.YX67QBB/awsdata.json'
+                Key : `${process.env.CLIENT_FOLDER}/awsdata.json`
             }
             const data = await s3.getObject(params).promise();
             console.log(JSON.parse(data.Body.toString())['data'])
-            API_CALL_ASYNC((JSON.parse(data.Body.toString()))["data"])
+            await API_CALL_ASYNC((JSON.parse(data.Body.toString()))["data"])
         }
         catch(e){
             throw new Error(`Could not retrieve File ${e.message}`);
