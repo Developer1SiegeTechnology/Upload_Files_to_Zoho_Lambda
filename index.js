@@ -26,7 +26,6 @@ exports.handler = function (event){
         catch(e){
             throw new Error(`Could not retrieve File ${e.message}`);
         }
-        console.log(`START TIME : ${startTime}\nSTOP TIME: ${moment().format("LTS")}`)
     }
 
     // -- Async function for API calls so that API calls are being executed in order and 
